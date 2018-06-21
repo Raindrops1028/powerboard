@@ -66,7 +66,7 @@ void fill_report(sensors_report_struct * report, DEV_TYPE dev_type)
 	}
 	else report->sensors_status = read_sensor_status(dev_type);
 
-	report->checksum = checksum((uint8_t *)report,sizeof(report)- 2);	
+	report->checksum = checksum((uint8_t *)report,sizeof(sensors_report_struct)- 2);	
 	report->tail = 0xdd;
 }
 

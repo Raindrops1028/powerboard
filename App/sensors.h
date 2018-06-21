@@ -7,7 +7,7 @@ typedef enum dev_type
 	BODY_SEN = 0x0,
 	TOUCH_SEN
 }DEV_TYPE;
-
+#pragma pack(1) 
 typedef struct
 {
 	uint8_t head;
@@ -17,6 +17,7 @@ typedef struct
 	uint8_t checksum;
 	uint8_t tail;
 }sensors_report_struct;
+#pragma pack()
 
 uint16_t read_sensor_status(DEV_TYPE dev_type);
 void update_sensors_data(void);
