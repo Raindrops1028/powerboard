@@ -21,4 +21,5 @@ typedef struct
 
 uint16_t read_sensor_status(DEV_TYPE dev_type);
 void update_sensors_data(void);
+uint8_t checksum(uint8_t *pdate, int size);
 #endif

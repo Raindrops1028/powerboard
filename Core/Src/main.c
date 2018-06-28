@@ -39,14 +39,13 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "stm32f1xx_hal.h"
-#include "i2c.h"
 #include "tim.h"
 #include "usart.h"
 #include "gpio.h"
 
 /* USER CODE BEGIN Includes */
-#include "sensors.h"
-#include "led_rgb.h"
+#include "user.h"
+#include "ws2813b.h"
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
@@ -67,8 +66,7 @@ void SystemClock_Config(void);
 /* USER CODE BEGIN 0 */
 //uint8_t STOP = 1;
 //uint8_t aTxStartMessage[] = "\r\n****UART-Hyperterminal communication based on IT ****\r\nEnter 10 characters using keyboard :\r";
-uint8_t aRxBuffer[2],bRxBuffer[7];
-uint16_t sensors_init_status = 0x0;
+
 /* USER CODE END 0 */
 
 /**
@@ -101,24 +99,10 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_USART1_UART_Init();
-  MX_USART2_UART_Init();
   MX_TIM3_Init();
   MX_TIM4_Init();
-  MX_I2C2_Init();
   /* USER CODE BEGIN 2 */
-	HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
-	HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_2);
-	HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_3);
-	HAL_TIM_Base_Start_IT(&htim4);
-
-//	HAL_UART_Transmit_IT(&huart2, (uint8_t *)aTxStartMessage, sizeof(aTxStartMessage));
-	HAL_UART_Receive_IT(&huart1, (uint8_t *)aRxBuffer, 1);
-	HAL_GPIO_WritePin(GPIOB,LED_EN_Pin, GPIO_PIN_SET);
-	blud_led();
-	HAL_Delay(3000);
-	sensors_init_status = read_sensor_status(TOUCH_SEN);
-	HAL_GPIO_WritePin(GPIOA,SPK_EN_Pin, GPIO_PIN_SET);	
-	HAL_Delay(12000);
+	user_board_init();
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -128,8 +112,7 @@ int main(void)
   /* USER CODE END WHILE */
 
   /* USER CODE BEGIN 3 */
-		update_sensors_data();
-		HAL_Delay(500);
+		user_progress();
 	}
   /* USER CODE END 3 */
 
@@ -186,32 +169,7 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
-void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
-{
-//	if(huart->Instance == huart1)
-//	{
-		static uint8_t cnt = 0;
-		uint8_t temp = aRxBuffer[0];
-		if(cnt == 0){
-			if(temp == 0xaa){
-				bRxBuffer[cnt++]  = 0xaa;
-			}	
-		}
-		else{
-			if(cnt < 7){
-				bRxBuffer[cnt++] = temp;
-				if(0xdd == temp && cnt == 7){	
-	//				STOP = !STOP;
-					mode_command(bRxBuffer[4]);
-				}
-				if(cnt == 7) cnt = 0;
-			}
-			else cnt = 0;	
-		}
-		
-		HAL_UART_Receive_IT(&huart1, (uint8_t *)aRxBuffer, 1);		
-//	}	
-}
+
 /* USER CODE END 4 */
 
 /**

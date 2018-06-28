@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Project>
-<ProjectName>E:\1.MCU&#24037;&#31243;\back-up\QXZN_CONTROL_BOARD\\QXZN_CONTROL_BOARD</ProjectName>
+<ProjectName>E:\1.MCU&#24037;&#31243;\project-managed-by-git\QXZN_CONTROL_BOARD\\QXZN_CONTROL_BOARD</ProjectName>
 <ProjectNature>C</ProjectNature> 
 <CMSIS>..\Drivers\CMSIS</CMSIS>
 <HAL_Driver>D:\Users\hwy\STM32Cube\Repository\STM32Cube_FW_F1_V1.6.1\Drivers\CMSIS</HAL_Driver>
@@ -81,9 +81,6 @@
 							<name>../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.c</name>
 						</file>
 						<file>
-							<name>../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_i2c.c</name>
-						</file>
-						<file>
 							<name>../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c</name>
 						</file>
 						<file>
@@ -137,10 +134,6 @@
 
                                 <file>
                                  <name>..\Core\Src\gpio.c</name>
-                                </file>
-
-                                <file>
-                                 <name>..\Core\Src\i2c.c</name>
                                 </file>
 
                                 <file>

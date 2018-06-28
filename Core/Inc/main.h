@@ -59,6 +59,8 @@
 #define TOUCH_DET_1_GPIO_Port GPIOA
 #define BODY_DET_Pin GPIO_PIN_1
 #define BODY_DET_GPIO_Port GPIOA
+#define LED_DOUT_Pin GPIO_PIN_3
+#define LED_DOUT_GPIO_Port GPIOA
 #define MUTE_EN_Pin GPIO_PIN_4
 #define MUTE_EN_GPIO_Port GPIOA
 #define SPK_EN_Pin GPIO_PIN_5
@@ -87,8 +89,8 @@
 #define TOUCH_DET_11_GPIO_Port GPIOA
 #define TOUCH_DET_12_Pin GPIO_PIN_12
 #define TOUCH_DET_12_GPIO_Port GPIOA
-#define LED_EN_Pin GPIO_PIN_3
-#define LED_EN_GPIO_Port GPIOB
+#define BOTTOM_LED_EN_Pin GPIO_PIN_3
+#define BOTTOM_LED_EN_GPIO_Port GPIOB
 #define FS_EN_Pin GPIO_PIN_4
 #define FS_EN_GPIO_Port GPIOB
 #define TOUCH_DET_6_Pin GPIO_PIN_8

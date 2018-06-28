@@ -22,7 +22,6 @@ uint8_t checksum(uint8_t *pdate, int size)
 }
 
 
-
 #define SET_BIT_STATUS(status,dev_id) ((((status) == 1) ?  1 : 0) << (dev_id - 1))
 
 uint16_t read_sensor_status(DEV_TYPE dev_type)
@@ -52,6 +51,21 @@ uint16_t read_sensor_status(DEV_TYPE dev_type)
 	return status;
 }
 
+uint16_t read_sensor_status_(DEV_TYPE dev_type)
+{
+	uint16_t status = 0;
+	switch(dev_type)
+	{
+		case BODY_SEN:
+			status = GPIOA->IDR&0x01;		
+			break;
+		case TOUCH_SEN:
+			status = GPIOB->IDR&0xff;
+			break;		
+		default:break;
+	}
+	return status;	
+}
 extern uint16_t sensors_init_status;
 void fill_report(sensors_report_struct * report, DEV_TYPE dev_type)
 {
