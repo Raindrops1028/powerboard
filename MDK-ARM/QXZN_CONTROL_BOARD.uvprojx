@@ -49,7 +49,7 @@
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
           <OutputDirectory>QXZN_CONTROL_BOARD\</OutputDirectory>
-          <OutputName>QXZN_CONTROL_BOARD</OutputName>
+          <OutputName>QXZN_CONTROL_BOARD_v2_3</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>1</CreateHexFile>
@@ -336,7 +336,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32F103xB</Define>
               <Undefine></Undefine>
-              <IncludePath>../Core/Inc;                 ../Drivers/STM32F1xx_HAL_Driver/Inc;                 ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy;                 ../Drivers/CMSIS/Device/ST/STM32F1xx/Include;                 ../Drivers/CMSIS/Include;                 ..\App</IncludePath>
+              <IncludePath>../Core/Inc;                    ../Drivers/STM32F1xx_HAL_Driver/Inc;                    ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy;                    ../Drivers/CMSIS/Device/ST/STM32F1xx/Include;                    ../Drivers/CMSIS/Include;                    ..\App</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>

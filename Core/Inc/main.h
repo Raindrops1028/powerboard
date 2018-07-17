@@ -63,8 +63,8 @@
 #define LED_DOUT_GPIO_Port GPIOA
 #define MUTE_EN_Pin GPIO_PIN_4
 #define MUTE_EN_GPIO_Port GPIOA
-#define SPK_EN_Pin GPIO_PIN_5
-#define SPK_EN_GPIO_Port GPIOA
+#define SPK_EN1_Pin GPIO_PIN_5
+#define SPK_EN1_GPIO_Port GPIOA
 #define BLED_C_Pin GPIO_PIN_6
 #define BLED_C_GPIO_Port GPIOA
 #define RLED_C_Pin GPIO_PIN_7
@@ -73,8 +73,12 @@
 #define GLED_C_GPIO_Port GPIOB
 #define TOUCH_DET_7_Pin GPIO_PIN_1
 #define TOUCH_DET_7_GPIO_Port GPIOB
-#define RSTN_OUT_Pin GPIO_PIN_2
-#define RSTN_OUT_GPIO_Port GPIOB
+#define SPK_EN_Pin GPIO_PIN_2
+#define SPK_EN_GPIO_Port GPIOB
+#define SW0_Pin GPIO_PIN_10
+#define SW0_GPIO_Port GPIOB
+#define SW1_Pin GPIO_PIN_11
+#define SW1_GPIO_Port GPIOB
 #define TOUCH_DET_Pin GPIO_PIN_12
 #define TOUCH_DET_GPIO_Port GPIOB
 #define PWR_LED_Pin GPIO_PIN_13

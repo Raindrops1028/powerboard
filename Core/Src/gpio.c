@@ -69,11 +69,11 @@ void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, LED_DOUT_Pin|MUTE_EN_Pin|SPK_EN_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, LED_DOUT_Pin|MUTE_EN_Pin|SPK_EN1_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, RSTN_OUT_Pin|TOUCH_DET_Pin|PWR_LED_Pin|BOTTOM_LED_EN_Pin 
-                          |FS_EN_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOB, SPK_EN_Pin|SW0_Pin|SW1_Pin|TOUCH_DET_Pin 
+                          |PWR_LED_Pin|BOTTOM_LED_EN_Pin|FS_EN_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pins : PCPin PCPin PCPin */
   GPIO_InitStruct.Pin = TOUCH_DET_4_Pin|TOUCH_DET_3_Pin|TOUCH_DET_2_Pin;
@@ -90,7 +90,7 @@ void MX_GPIO_Init(void)
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
   /*Configure GPIO pins : PAPin PAPin PAPin */
-  GPIO_InitStruct.Pin = LED_DOUT_Pin|MUTE_EN_Pin|SPK_EN_Pin;
+  GPIO_InitStruct.Pin = LED_DOUT_Pin|MUTE_EN_Pin|SPK_EN1_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
@@ -104,9 +104,9 @@ void MX_GPIO_Init(void)
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
   /*Configure GPIO pins : PBPin PBPin PBPin PBPin 
-                           PBPin */
-  GPIO_InitStruct.Pin = RSTN_OUT_Pin|TOUCH_DET_Pin|PWR_LED_Pin|BOTTOM_LED_EN_Pin 
-                          |FS_EN_Pin;
+                           PBPin PBPin PBPin */
+  GPIO_InitStruct.Pin = SPK_EN_Pin|SW0_Pin|SW1_Pin|TOUCH_DET_Pin 
+                          |PWR_LED_Pin|BOTTOM_LED_EN_Pin|FS_EN_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);

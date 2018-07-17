@@ -18,9 +18,11 @@ void user_board_init(void)
 	bottom_led(blue);
 	front_led(blue);
 	HAL_Delay(3000);
-	sensors_init_status = read_sensor_status(TOUCH_SEN);
-	HAL_GPIO_WritePin(GPIOA,SPK_EN_Pin, GPIO_PIN_SET);	
+//	sensors_init_status = read_sensor_status(TOUCH_SEN);
+	HAL_GPIO_WritePin(GPIOA,SPK_EN1_Pin, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(GPIOB,SPK_EN_Pin, GPIO_PIN_SET);		
 	HAL_Delay(12000);
+	sensors_init_status = read_sensor_status(TOUCH_SEN);	
 }
 
 void user_progress(void)
@@ -32,14 +34,41 @@ void user_progress(void)
 uint8_t breath_start = 0;
 void mode_command(uint8_t cmd)
 {
-	switch(cmd)
+	if(0x03 == RxBuffer[2])
 	{
-		case 0x00:breath_start = 0;bottom_led(red);	front_led(red);break;
-		case 0x01:breath_start = 0;bottom_led(green);front_led(green);break;
-		case 0x02:breath_start = 0;bottom_led(blue);front_led(blue);break;
-		case 0x03:breath_start = 1;break;
-		default:break;
+		switch(cmd)
+		{
+			case 0x00:breath_start = 0;bottom_led(red);	front_led(red);break;
+			case 0x01:breath_start = 0;bottom_led(green);front_led(green);break;
+			case 0x02:breath_start = 0;bottom_led(blue);front_led(blue);break;
+			case 0x03:breath_start = 1;break;
+			default:break;
+		}	
 	}
+	else if(0x04 == RxBuffer[2])
+	{
+		switch(cmd)
+		{
+			case 0x00:
+				HAL_GPIO_WritePin(GPIOB,SW0_Pin, GPIO_PIN_RESET);
+				HAL_GPIO_WritePin(GPIOB,SW1_Pin, GPIO_PIN_RESET);				
+				break;
+			case 0x01:
+				HAL_GPIO_WritePin(GPIOB,SW0_Pin, GPIO_PIN_SET);
+				HAL_GPIO_WritePin(GPIOB,SW1_Pin, GPIO_PIN_RESET);				
+				break;
+			case 0x10:
+				HAL_GPIO_WritePin(GPIOB,SW0_Pin, GPIO_PIN_RESET);
+				HAL_GPIO_WritePin(GPIOB,SW1_Pin, GPIO_PIN_SET);				
+				break;
+			case 0x11:
+				HAL_GPIO_WritePin(GPIOB,SW0_Pin, GPIO_PIN_SET);
+				HAL_GPIO_WritePin(GPIOB,SW1_Pin, GPIO_PIN_SET);				
+				break;
+			default:break;
+		}		
+	}
+
 }
 
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
